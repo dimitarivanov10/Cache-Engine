@@ -40,3 +40,53 @@ def main():
     cache = CacheManager(capacity=capacity, strategy=initial_strategy)
     print(f"\n[Initialized] Cache created with capacity {capacity} using {initial_strategy.__class__.__name__}")
 
+    while True:
+        print_menu()
+        choice = input("Select an option (1-6): ").strip()
+
+        if choice == "1":
+            key = input("Enter Key: ").strip()
+            val = input("Enter Value: ").strip()
+
+            if key:
+                cache.put(key, val)
+                print(f"[Sucess] Set '{key}' = '{val}'")
+            else:
+                print("[Error] Key cannot be empty.")
+
+        elif choice == "2":
+            key = input("Enter Key to fetch: ").stip()
+            val = cache.get(key)
+            if val is not None:
+                print(f"[FOUND] {key} -> {val}")
+            else:
+                print(f"[MISS] Key '{key}' not found in cache")
+
+        elif choice == "3":
+            key = input("Enter Key to delete: ").strip()
+            if cache.delete(key):
+                print(f"[Deleted] Key '{key}' removed.")
+            else:
+                print(f"[Error] Key '{key}' not found.")
+
+        elif choice == "4":
+            print("\n--- Current Cache State ---")
+            print(f"Capacity: {len(cache.storage)} / {cache.capacity}")
+            print(f"Active Strategy: {cache.strategy.__class__.__name__}")
+            print(f"Contents: {cache.storage}")
+
+        elif choice == "5":
+            new_strategy = choose_strategy()
+            cache.set_strategy(new_strategy)
+
+        elif choice == "6":
+            print("\nExiting Cache Engine. Goodbye!")
+            sys.exit(0)
+
+        else:
+            print("[Error] Invalid option. Please select 1-6.")
+
+
+if __name__ == "__main__":
+    main()
+
