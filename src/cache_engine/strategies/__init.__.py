@@ -9,3 +9,11 @@ STRATEGY_MAP = {
     # "3": ("LFU (Least Frequently Used)", LFUStrategy),
     # "4": ("MRU (Most Recently Used)", MRUStrategy),
 }
+
+__all__ = [
+    "FIFOStrategy",
+    "LRUStrategy",
+    "LFUStrategy",
+    "MRUStrategy",
+    "STRATEGY_MAP",
+]
