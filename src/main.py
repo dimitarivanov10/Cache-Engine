@@ -1,6 +1,13 @@
 import sys
 from cache_engine.manager import CacheManager
-from cache_engine.strategies import STRATEGY_MAP, FIFOStrategy
+from cache_engine.strategies.fifo import FIFOStrategy
+from cache_engine.strategies.lru import LRUStrategy
+
+STRATEGY_MAP = {
+    "1": ("FIFO (First-In, First-Out)", FIFOStrategy),
+    "2": ("LRU (Least Recently Used)", LRUStrategy),
+}
+
 
 def print_menu():
     print("\n" + "=" * 40)
@@ -55,7 +62,7 @@ def main():
                 print("[Error] Key cannot be empty.")
 
         elif choice == "2":
-            key = input("Enter Key to fetch: ").stip()
+            key = input("Enter Key to fetch: ").strip()
             val = cache.get(key)
             if val is not None:
                 print(f"[FOUND] {key} -> {val}")
