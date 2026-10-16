@@ -13,7 +13,5 @@ STRATEGY_MAP = {
 __all__ = [
     "FIFOStrategy",
     "LRUStrategy",
-    # "LFUStrategy",
-    # "MRUStrategy",
     "STRATEGY_MAP",
 ]
