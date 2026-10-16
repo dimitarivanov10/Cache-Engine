@@ -15,7 +15,7 @@ class FIFOStrategy(EvictionStrategy):
 
     def on_put(self, key: str) -> None:
         if key not in self.order:
-            self.oder.append(key)
+            self.order.append(key)
 
     def evict_key(self) -> str:
         if not self.order:
