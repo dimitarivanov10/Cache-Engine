@@ -1,4 +1,4 @@
-from typing import Any, Operational
+from typing import Any, Optional
 from cache_engine.base import EvictionStrategy
 
 class CacheManager:
