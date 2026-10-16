@@ -10,7 +10,9 @@ class LFUStrategy(EvictionStrategy):
             self.frequencies[key] += 1
 
     def on_put(self, key: str) -> None:
-        if key not in self.frequencies:
+        if key in self.frequencies:
+            self.frequencies[key] += 1
+        else:
             self.frequencies[key] = 1
 
     def evict_key(self) -> str:
