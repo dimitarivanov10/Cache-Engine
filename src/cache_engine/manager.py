@@ -38,9 +38,9 @@ class CacheManager:
             return True
         return False
 
-    def set_strategy(self, new_strategy, EvictionStrategy) -> None:
+    def set_strategy(self, new_strategy: EvictionStrategy) -> None:
         self.strategy = new_strategy
         for key in self.storage:
             self.strategy.on_put(key)
 
-        print(f"\n [Strategy Swapped] Active strategy is now {new_strategy: __class__.__name__}")
+        print(f"\n [Strategy Swapped] Active strategy is now {new_strategy.__class__.__name__}")
